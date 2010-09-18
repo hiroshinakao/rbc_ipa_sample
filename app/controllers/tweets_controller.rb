@@ -4,6 +4,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.xml
   def index
+    @tweet = Tweet.new
     @tweets = Tweet.all
 
     respond_to do |format|
@@ -46,7 +47,7 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to(@tweet, :notice => 'Tweet was successfully created.') }
+        format.html { redirect_to(tweets_url, :notice => 'Tweet was successfully created.') }
         format.xml  { render :xml => @tweet, :status => :created, :location => @tweet }
       else
         format.html { render :action => "new" }
