@@ -2,6 +2,8 @@
 
 <table>
   <tr>
+    <th>Time</th>
+    <th>User</th>
     <th>Tweet</th>
     <th></th>
     <th></th>
@@ -10,6 +12,8 @@
 
 <% @tweets.each do |tweet| %>
   <tr>
+    <td><%= tweet.created_at.to_s(:db) %></td>
+    <td><%= tweet.user.email if tweet.user %></td>
     <td><%= tweet.tweet %></td>
     <td><%= link_to 'Show', tweet %></td>
     <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>

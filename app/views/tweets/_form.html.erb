@@ -15,6 +15,7 @@
     <%= f.label :tweet %><br />
     <%= f.text_field :tweet %>
   </div>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
     <%= f.submit %>
   </div>
