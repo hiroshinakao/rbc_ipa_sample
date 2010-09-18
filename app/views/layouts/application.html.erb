@@ -10,6 +10,11 @@
 
 <% if current_user %>
   <%= current_user.email %> | <%= link_to('Sign out', destroy_user_session_path) %>
+	<% if current_user.user_profile %>
+	| <%= link_to 'Profile', :controller => :user_profiles, :action => :edit, :id => current_user.user_profile.id %>
+  <% else %>
+	| <%= link_to 'Profile', :controller => :user_profiles, :action => :new %>
+  <% end %>
 <% end %>
 
 <%= yield %>

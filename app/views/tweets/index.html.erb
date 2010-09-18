@@ -13,7 +13,11 @@
 <% @tweets.each do |tweet| %>
   <tr>
     <td><%= tweet.created_at.to_s(:db) %></td>
-    <td><%= tweet.user.email if tweet.user %></td>
+    <% user = tweet.user %>
+    <td>
+		  <%= user ? user.email : nil %>
+			<%= link_to '(Profile)', :controller => :user_profiles, :action => :show, :id => user.user_profile.id if user && user.user_profile %>
+		</td>
     <td><%= tweet.tweet %></td>
     <td><%= link_to 'Show', tweet %></td>
     <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
